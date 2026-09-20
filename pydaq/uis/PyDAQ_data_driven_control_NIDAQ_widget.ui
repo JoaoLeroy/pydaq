@@ -1,0 +1,1025 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>NIDAQ_Data_Driven_Control</class>
+ <widget class="QWidget" name="NIDAQ_Data_Driven_Control">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>850</width>
+    <height>1180</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>PYDAQ - Data-Driven Control NI-DAQ</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+QWidget{
+    background-color: rgb(64, 64, 64);
+    color: rgb(255, 255, 255);
+    font: 12pt "Helvetica";
+}
+
+
+QLabel{
+    color: rgb(255, 255, 255);
+}
+
+QComboBox,
+QLineEdit,
+QPlainTextEdit,
+QSpinBox,
+QDoubleSpinBox{
+    background-color: rgb(77, 77, 77);
+    color: rgb(255, 255, 255);
+
+    border-top: 1.5px solid rgb(46, 46, 46);
+    border-left: 1.5px solid rgb(46, 46, 46);
+
+    border-bottom: 1.5px solid rgb(166, 166, 166);
+    border-right: 1.5px solid rgb(166, 166, 166);
+}
+
+QComboBox QAbstractItemView {
+    background-color: rgb(77, 77, 77);
+    color: rgb(255, 255, 255);
+}
+
+QComboBox QAbstractItemView::item:focus{
+    background-color: rgb(140, 140, 140);
+}
+
+QComboBox::drop-down{
+    image: url(:/imgs/imgs/drop_down_arrow.png);
+    width: 11px;
+
+    background-color: rgb(0, 79, 0);
+    border-top: 2px solid rgb(127, 167, 127);
+    border-left: 2px solid rgb(127, 167, 127);
+
+    border-bottom: 2px solid rgb(0, 0, 0);
+    border-right: 2px solid rgb(0, 0, 0);
+}
+
+QComboBox::drop-down:hover{
+    background-color: rgb(0, 50, 0);
+}
+
+QComboBox::drop-down:pressed{
+    border: 2px solid rgb(255, 255, 255);
+}
+
+QDoubleSpinBox::up-button,
+QSpinBox::up-button{
+    image: url(:/imgs/imgs/drop_up_arrow.png);
+    width: 11px;
+
+    background-color: rgb(0, 79, 0);
+    border-top: 1.5px solid rgb(127, 167, 127);
+    border-left: 1.5px solid rgb(127, 167, 127);
+
+    border-bottom: 1.5px solid rgb(0, 0, 0);
+    border-right: 1.5px solid rgb(0, 0, 0);
+}
+
+QDoubleSpinBox::down-button,
+QSpinBox::down-button{
+    image: url(:/imgs/imgs/drop_down_arrow.png);
+    width: 11px;
+
+    background-color: rgb(0, 79, 0);
+    border-top: 1.5px solid rgb(127, 167, 127);
+    border-left: 1.5px solid rgb(127, 167, 127);
+
+    border-bottom: 1.5px solid rgb(0, 0, 0);
+    border-right: 1.5px solid rgb(0, 0, 0);
+}
+
+QDoubleSpinBox::up-button:hover,
+QDoubleSpinBox::down-button:hover,
+QSpinBox::up-button:hover,
+QSpinBox::down-button:hover{
+    background-color: rgb(0, 50, 0);
+}
+
+QDoubleSpinBox::up-button:pressed,
+QDoubleSpinBox::down-button:pressed,
+QSpinBox::up-button:pressed,
+QSpinBox::down-button:pressed{
+    border: 2px solid rgb(255, 255, 255);
+}
+
+QDoubleSpinBox:disabled,
+QSpinBox:disabled {
+    background-color: rgb(50, 50, 50);
+
+    border-top: 1.5px solid rgb(30, 30, 30);
+    border-left: 1.5px solid rgb(30, 30, 30);
+
+    border-bottom: 1.5px solid rgb(100, 100, 100);
+    border-right: 1.5px solid rgb(100, 100, 100);
+
+    color: rgb(150, 150, 150);
+}
+
+QPushButton{
+    background-color: rgb(0, 79, 0);
+
+    border-top: 1.5px solid rgb(127, 167, 127);
+    border-left: 1.5px solid rgb(127, 167, 127);
+
+    border-bottom: 1.5px solid rgb(0, 0, 0);
+    border-right: 1.5px solid rgb(0, 0, 0);
+
+    font: 12pt "Helvetica";
+    text-align:center;
+}
+
+QPushButton:hover{
+    background-color: rgb(0, 50, 0);
+}
+
+QPushButton:pressed{
+    border: 2px solid rgb(255, 255, 255);
+}
+
+QPushButton#reload_devices{
+    image: url(:/imgs/imgs/reload.png);
+    width: 11px;
+}
+
+QRadioButton::indicator{
+    border-radius: 6px;
+
+    border-top: 1.5px solid rgb(0, 0, 0);
+    border-left: 1.5px solid rgb(0, 0, 0);
+
+    border-bottom: 1.5px solid rgb(160, 160, 160);
+    border-right: 1.5px solid rgb(160, 160, 160);
+}
+
+QRadioButton::indicator::checked{
+    background-color: white;
+}
+
+QRadioButton::indicator::unchecked:hover{
+    background-color: #9F9F9F;
+}
+
+QRadioButton::indicator::pressed{
+    border: 1.5px solid #505050;
+}
+
+QLabel::toolTip {
+    font: 12pt "Helvetica";
+    color: white;
+    background-color: rgb(64, 64, 64);
+}
+   </string>
+  </property>
+
+  <layout class="QGridLayout" name="gridLayout">
+
+   <item row="0" column="0">
+    <widget class="QWidget" name="widget_top" native="true">
+     <layout class="QGridLayout" name="gridLayout_2">
+
+      <item row="0" column="2" rowspan="20">
+       <widget class="Line" name="line">
+        <property name="orientation">
+         <enum>Qt::Orientation::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+
+      <!-- Simulate -->
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_simulate">
+        <property name="text">
+         <string>Simulate?</string>
+        </property>
+       </widget>
+      </item>
+
+      <item row="0" column="3">
+       <widget class="QWidget" name="widget_simulate" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout_simulate">
+         <item>
+          <widget class="QRadioButton" name="yes_simulate_radio">
+           <property name="text">
+            <string>Yes</string>
+           </property>
+           <attribute name="buttonGroup">
+            <string notr="true">simulate_radio_group</string>
+           </attribute>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="no_simulate_radio">
+           <property name="text">
+            <string>No</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+           <attribute name="buttonGroup">
+            <string notr="true">simulate_radio_group</string>
+           </attribute>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_simulate">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </item>
+
+      <!-- Simulation plant model -->
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_system_equation">
+        <property name="text">
+         <string>System equation:</string>
+        </property>
+       </widget>
+      </item>
+
+      <item row="1" column="1">
+       <widget class="QLabel" name="label_i_polinomial">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Transfer function of a polynomial system G(s)=N(s)/D(s), where N(s) and D(s) are polynomials in s.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+
+      <item row="1" column="3">
+       <widget class="QWidget" name="widget_polynomial" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout_polynomial">
+         <item>
+          <widget class="QLabel" name="label_numerator">
+           <property name="text">
+            <string>Numerator:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_numerator">
+           <property name="text">
+            <string>1</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_denominator">
+           <property name="text">
+            <string>Denominator:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_denominator">
+           <property name="text">
+            <string>1*s+0.2</string>
+           </proper*y>
+          </widget>
+         </*tem>
+        </layout>
+       </wi*get>
+      </item>
+
+      <!-- NI-*AQ Device -->
+      <item row="2" *olumn="0">
+       <widget class="Q*abel" name="label_nidaq">
+        *property name="minimumSize">
+     *   <size>
+          <width>154</wi*th>
+          <height>30</height>
+*        </size>
+        </property*
+        <property name="maximumSi*e">
+         <size>
+          <wid*h>160</width>
+          <height>16*77215</height>
+         </size>
+  *     </property>
+        <property*name="text">
+         <string>Devi*e:</string>
+        </property>
+  *    </widget>
+      </item>
+
+     *<item row="2" column="3">
+       <*idget class="QWidget" name="widget*nidaq" native="true">
+        <lay*ut class="QHBoxLayout" name="horiz*ntalLayout_nidaq">
+         <item>*          <widget class="QComboBox* name="device_combo">
+           <*roperty name="maximumSize">
+      *     <size>
+             <width>90*0000</width>
+             <height>*6777215</height>
+            </siz*>
+           </property>
+         *</widget>
+         </item>
+       * <item>
+          <widget class="Q*ushButton" name="reload_devices">
+*          <property name="minimumS*ze">
+            <size>
+          *  <width>22</width>
+             <*eight>22</height>
+            </si*e>
+           </property>
+        *  <property name="maximumSize">
+  *         <size>
+             <widt*>22</width>
+             <height>2*</height>
+            </size>
+    *      </property>
+           <prop*rty name="text">
+            <stri*g/>
+           </property>
+       *  </widget>
+         </item>
+     *  </layout>
+       </widget>
+     *</item>
+
+      <!-- AI/AO channels*-->
+      <item row="3" column="0"*
+       <widget class="QLabel" nam*="label_ai_channel">
+        <prop*rty name="text">
+         <string>*I channels:</string>
+        </pro*erty>
+       </widget>
+      </ite*>
+
+      <item row="3" column="3">*       <widget class="QWidget" nam*="widget_ai_channel" native="true"*
+        <layout class="QHBoxLayou*" name="horizontalLayout_ai_channe*">
+         <item>
+          <widg*t class="QComboBox" name="ai_chann*l_combo"/>
+         </item>
+      * </layout>
+       </widget>
+      */item>
+
+      <item row="4" column*"0">
+       <widget class="QLabel"*name="label_ao_channel">
+        <*roperty name="text">
+         <str*ng>AO channels:</string>
+        <*property>
+       </widget>
+      <*item>
+
+      <item row="4" column=*3">
+       <widget class="QWidget"*name="widget_ao_channel" native="t*ue">
+        <layout class="QHBoxL*yout" name="horizontalLayout_ao_ch*nnel">
+         <item>
+          <*idget class="QComboBox" name="ao_c*annel_combo"/>
+         </item>
+  *     </layout>
+       </widget>
+  *   </item>
+
+      <!-- Terminal co*figuration -->
+      <item row="5"*column="0">
+       <widget class="*Label" name="label_terminal">
+    *   <property name="text">
+        *<string>Terminal config.:</string>*        </property>
+       </widge*>
+      </item>
+
+      <item row="*" column="3">
+       <widget class*"QWidget" name="widget_terminal_co*fig" native="true">
+        <layou* class="QHBoxLayout" name="horizon*alLayout_terminal">
+         <item*
+          <widget class="QComboBo*" name="terminal_config_combo"/>
+ *       </item>
+        </layout>
+ *     </widget>
+      </item>
+
+    * <!-- Setpoint -->
+      <item row*"6" column="0">
+       <widget cla*s="QLabel" name="label_setpoint">
+*       <property name="minimumSize*>
+         <size>
+          <width*0</width>
+          <height>30</he*ght>
+         </size>
+        </pr*perty>
+        <property name="tex*">
+         <string>Setpoint:</str*ng>
+        </property>
+       </w*dget>
+      </item>
+
+      <item r*w="6" column="3">
+       <widget c*ass="QWidget" name="widget_setpoin*" native="true">
+        <layout c*ass="QHBoxLayout" name="horizontal*ayout_setpoint">
+         <item>
+ *        <widget class="QDoubleSpin*ox" name="doubleSpinBox_setpoint">*           <property name="maximum*ize">
+            <size>
+         *   <width>100</width>
+            *<height>16777215</height>
+        *   </size>
+           </property>
+*          <property name="decimals*>
+            <number>6</number>
+ *         </property>
+           <p*operty name="maximum">
+           *<double>999999999999.0000000000000*0</double>
+           </property>
+*          <property name="singleSt*p">
+            <double>0.01000000*000000</double>
+           </prope*ty>
+           <property name="val*e">
+            <double>5.00000000*000000</double>
+           </prope*ty>
+          </widget>
+         <*item>
+         <item>
+          <w*dget class="QComboBox" name="combo*ox_setpoint">
+           <property*name="minimumSize">
+            <s*ze>
+             <width>190</width*
+             <height>0</height>
+ *          </size>
+           </pro*erty>
+           <item>
+          * <property name="text">
+          *  <string>Voltage (V)</string>
+   *        </property>
+           </i*em>
+           <item>
+            *property name="text">
+            *<string>Temperature (C°)</string>
+*           </property>
+           */item>
+           <item>
+         *  <property name="text">
+         *   <string>Other</string>
+        *   </property>
+           </item>
+*         </widget>
+         </item*
+        </layout>
+       </widget*
+      </item>
+
+      <!-- Unit --*
+      <item row="7" column="0">
+ *     <widget class="QLabel" name="*abel_unit">
+        <property name*"minimumSize">
+         <size>
+   *      <width>0</width>
+          <*eight>30</height>
+         </size>*        </property>
+        <prope*ty name="text">
+         <string>U*it:</string>
+        </property>
+ *     </widget>
+      </item>
+
+    * <item row="7" column="3">
+       *widget class="QWidget" name="widge*_unit" native="true">
+        <lay*ut class="QHBoxLayout" name="horiz*ntalLayout_unit">
+         <item>
+*         <widget class="QLineEdit"*name="lineEdit_unit">
+           <*roperty name="text">
+            <*tring>Current (A)</string>
+       *   </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+
+      <!-- Calibration equations -->
+      <item row="8" column="0">
+       <widget class="QLabel" name="label_equation">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Calibration equations should use x as the variable. Example: 1*x or A*x+B.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>Equation:</string>
+        </property>
+       </widget>
+      </item>
+
+      <item row="8" column="1" alignment="Qt::AlignmentFlag::AlignRight">
+       <widget class="QLabel" name="label_i_equation">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Calibration equations should use x as the variable. Example: 1*x or A*x+B.&lt;/p&gt;&lt;/body&gt;&*t;/html&gt;</string>
+        </pro*erty>
+        <property name="text*>
+         <string>&lt;html&gt;&lt*head/&gt;&lt;body&gt;&lt;p&gt;&lt;*mg src=&g*;&lt;/p&gt;&lt;/body&gt;&lt;/html&*t;</string>
+        </property>
+  *    </widget>
+      </item>
+
+     *<item row="8" column="3">
+       <widget class="QWidget" name="widget_equation" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout_equation">
+         <item>
+          <widget class="QLabel" name="label_vunit">
+           <property name="text">
+            <string>V(Unit):</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_equationvu">
+           <property name="text">
+            <string>1*x</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_unitv">
+           <property name="text">
+            <string>Unit(V):</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_equationuv">
+           <property name="text">
+            <string>1*x</string>
+           </property>
+*         </widget>
+         </item*
+        </layout>
+       </widget*
+      </item>
+
+      <!-- Samplin* period -->
+      <item row="9" co*umn="0">
+       <widget class="QLa*el" name="label_periody">
+        *property name="minimumSize">
+     *   <size>
+          <width>0</widt*>
+          <height>30</height>
+  *      </size>
+        </property>
+*       <property name="text">
+    *    <string>Sampling period (s):</*tring>
+        </property>
+       */widget>
+      </item>
+
+      <ite* row="9" column="3">
+       <widge* class="QWidget" name="widget_peri*d" native="true">
+        <layout *lass="QHBoxLayout" name="horizonta*Layout_period">
+         <item>
+  *       <widget class="QDoubleSpinB*x" name="doubleSpinBox_period">
+  *        <property name="decimals">*            <number>6</number>
+   *       </property>
+           <pro*erty name="maximum">
+            <*ouble>999999999999.000000000000000*/double>
+           </property>
+  *        <property name="singleStep*>
+            <double>0.0100000000*0000</double>
+           </propert*>
+           <property name="value">
+            <double>0.050000000000000</double>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+
+      <!-- β -->
+      <item row="10" column="0">
+       <widget class="QLabel" name="label_beta">
+        <property name="text">
+         <string>β:</string>
+        </property>
+       </widget>
+      </item>
+
+      <item row="10" column="1">
+       <widget class="QLabel" name="label_i_beta">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;β is mandatory in NCbT. It defines the fixed controller structure. Example: [([1],[1,-1]), ([0,1],[1,-1])].&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+
+      <item row="10" column="3">
+       <widget class="QPlainTextEdit" name="plainTextEdit_beta">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>140</height>
+         </size>
+        </property>
+        <property name="plainText">
+         <string>[
+    ([1], [1, -1]),
+    ([0, 1], [1, -1]),
+    ([0, 0, 1], [1, -1]),
+    ([0, 0, 0, 1], [1, -1]),
+    ([0, 0, 0, 0, 1], [1, -1]),
+    ([0, 0, 0, 0, 0, 1], [1, -1])
+]</string>
+        </property>
+       </widget>
+      </item>
+
+      <!-- Reference model -->
+      <item row="11" column="0">
+       <widget class="QLabel" name="label_reference_model">
+        <property name="text">
+         <string>Reference model:</string>
+        </property>
+       </widget>
+      </item>
+
+      <item row="11" column="3">
+       <widget class="QWidget" name="widget_reference_model" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout_reference_model">
+         <item>
+          <widget class="QLabel" name="label_num_M">
+           <property name="text">
+            <string>num_M:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_num_M">
+           <property name="text">
+            <string>[0, 0, 0, 1]</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_den_M">
+           <property name="text">
+            <string>den_M:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_den_M">
+           <property name="text">
+            <string>[1, -1.2, 0.4]</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+
+      <!-- Instrument length -->
+      <item row="12" column="0">
+       <widget class="QLabel" name="label_l">
+        <property name="text">
+         <string>l:</string>
+        </property>
+       </widget>
+      </item>
+
+      <item row="12" column="3">
+       <widget class="QWidget" name="widget_l" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout_l">
+         <item>
+          <widget class="QSpinBox" name="spinBox_l">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>999999</number>
+           </property>
+           <property name="value">
+            <number>20</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+
+      <!-- Data files -->
+      <item row="13" column="0">
+       <widget class="QLabel" name="label_data_files">
+        <property name="text">
+         <string>NCbT data files:</string>
+        </property>
+       </widget>
+      </item>
+
+      <item row="13" column="3">
+       <widget class="QWidget" name="widget_data_files" native="true">
+        <layout class="QGridLayout" name="gridLayout_data_files">
+
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_u_data">
+           <property name="text">
+            <string>u:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="lineEdit_u_data_path"/>
+         </item>
+         <item row="0" column="2">
+          <widget class="QPushButton" name="pushButton_load_u">
+           <property name="text">
+            <string>BROWSE</string>
+           </property>
+          </widget>
+         </item>
+
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_y_data">
+           <property name="text">
+            <string>y:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="lineEdit_y_data_path"/>
+         </item>
+         <item row="1" column="2">
+          <widget class="QPushButton" name="pushButton_load_y">
+           <property name="text">
+            <string>BROWSE</string>
+           </property>
+          </widget>
+         </item>
+
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_r_data">
+           <property name="text">
+            <string>r:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLineEdit" name="lineEdit_r_data_path"/>
+         </item>
+         <item row="2" column="2">
+          <widget class="QPushButton" name="pushButton_load_r">
+           <property name="text">
+            <string>BROWSE</string>
+           </property>
+          </widget>
+         </item>
+
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_t_data">
+           <property name="text">
+            <string>t:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QLineEdit" name="lineEdit_t_data_path"/>
+         </item>
+         <item row="3" column="2">
+          <widget class="QPushButton" name="pushButton_load_t">
+           <property name="text">
+            <string>BROWSE</string>
+           </property>
+          </widget>
+         </item>
+
+        </layout>
+       </widget>
+      </item>
+
+      <!-- Estimated rho -->
+      <item row="14" column="0">
+       <widget class="QLabel" name="label_rho">
+        <property name="text">
+         <string>rho:</string>
+        </property>
+       </widget>
+      </item>
+
+      <item row="14" column="3">
+       <widget class="QPlainTextEdit" name="plainTextEdit_rho">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>80</height>
+         </size>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+
+      <!-- Save -->
+      <item row="15" column="0">
+       <widget class="QLabel" name="label_save">
+        <property name="text">
+         <string>Save data?</string>
+        </property>
+       </widget>
+      </item>
+
+      <item row="15" column="3">
+       <widget class="QWidget" name="widget_save" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout_save">
+         <item>
+          <widget class="QRadioButton" name="yes_save_radio">
+           <property name="text">
+            <string>Yes</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+           <attribute name="buttonGroup">
+            <string notr="true">save_radio_group</string>
+           </attribute>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="no_save_radio">
+           <property name="text">
+            <string>No</string>
+           </property>
+           <attribute name="buttonGroup">
+            <string notr="true">save_radio_group</string>
+           </attribute>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_save">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </item>
+
+      <!-- Path -->
+      <item row="16" column="0">
+       <widget class="QLabel" name="label_path">
+        <property name="text">
+         <string>Path:</string>
+        </property>
+       </widget>
+      </item>
+
+      <item row="16" column="3">
+       <widget class="QWidget" name="widget_path" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout_path">
+         <item>
+          <widget class="QLineEdit" name="path_line_edit">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>22</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="path_folder_browse">
+           <property name="minimumSize">
+            <size>
+             <width>90</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>BROWSE</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+
+      <!-- Confirm -->
+      <item row="17" column="3" alignment="Qt::AlignmentFlag::AlignHCenter">
+       <widget class="QPushButton" name="pushButton_confirm">
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>140</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>CONFIRM</string>
+        </property>
+       </widget>
+      </item>
+
+     </layout>
+    </widget>
+   </item>
+
+   <!-- Equation/controller preview frame -->
+   <item row="1" column="0">
+    <widget class="QFrame" name="frame_equation">
+     <property name="minimumSize">
+      <size>
+       <width>400</width>
+       <height>150</height>
+      </size>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Shape::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Shadow::Raised</enum>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_5">
+      <item row="0" column="0">
+       <widget class="QWidget" name="widget_image" native="true">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>130</height>
+         </size>
+        </property>
+        <layout class="QVBoxLayout" name="image_layout"/>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+
+   <item row="2" column="0">
+    <widget class="Line" name="line_3">
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+
+   <!-- Start button -->
+   <item row="3" column="0" alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
+    <widget class="QPushButton" name="pushButton_start">
+     <property name="minimumSize">
+      <size>
+       <width>180</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>240</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>DATA-DRIVEN CONTROL</string>
+     </property>
+    </widget>
+   </item>
+
+  </layout>
+ </widget>
+
+ <resources>
+  <include location="resources_1.qrc"/>
+ </resources>
+
+ <connections/>
+
+ <buttongroups>
+  <buttongroup name="simulate_radio_group"/>
+  <buttongroup name="save_radio_group"/>
+ </buttongroups>
+</ui>

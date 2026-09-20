@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ui version="4.0">
+ <class>Dialog_Plot_Data_Driven_NIDAQ_Window</class>
+ <widget class="QDialog" name="Dialog_Plot_Data_Driven_NIDAQ_Window">
+  <property name="windowTitle">
+   <string>PYDAQ - Data-Driven Control NI-DAQ</string>
+  </property>
+ </widget>
+ <resources />
+ <connections />
+</ui>
