@@ -29,6 +29,8 @@ from ..guis.lqr_control_nidaq_widget import LQRControl_NIDAQ_Widget
 from ..guis.lrq_control_arduino_widget import LQRControl_Arduino_Widget
 from ..guis.pid_control_arduino_widget import PID_Control_Arduino_Widget
 from ..guis.pid_control_nidaq_widget import PID_Control_NIDAQ_Widget
+from ..guis.data_driven_control_arduino_widget import Data_Driven_Control_Arduino_Widget
+from ..guis.data_driven_control_nidaq_widget import Data_Driven_Control_NIDAQ_Widget
 from ..guis.senddata_arduino_widget import SendData_Arduino_Widget
 from ..guis.senddata_nidaq_widget import SendData_NIDAQ_Widget
 from ..guis.stepresponse_arduino_widget import StepResponse_Arduino_Widget
@@ -627,6 +629,28 @@ class Ui_PydaqGlobal(object):
         self.gridLayout_20.addWidget(self.scrollArea_10, 0, 0, 1, 1)
 
         self.nidaq_tabs.addTab(self.pid_control_nidaq_tab, "")
+        self.data_driven_control_nidaq_tab = QWidget()
+        self.data_driven_control_nidaq_tab.setObjectName(u"data_driven_control_nidaq_tab")
+        self.gridLayout_26 = QGridLayout(self.data_driven_control_nidaq_tab)
+        self.gridLayout_26.setObjectName(u"gridLayout_26")
+        self.scrollArea_13 = QScrollArea(self.data_driven_control_nidaq_tab)
+        self.scrollArea_13.setObjectName(u"scrollArea_13")
+        self.scrollArea_13.setWidgetResizable(True)
+        self.scrollAreaWidgetContents_13 = QWidget()
+        self.scrollAreaWidgetContents_13.setObjectName(u"scrollAreaWidgetContents_13")
+        self.scrollAreaWidgetContents_13.setGeometry(QRect(0, 0, 525, 432))
+        self.gridLayout_27 = QGridLayout(self.scrollAreaWidgetContents_13)
+        self.gridLayout_27.setObjectName(u"gridLayout_27")
+        self.data_driven_nidaq_placeholder = Data_Driven_Control_NIDAQ_Widget(self.scrollAreaWidgetContents_13)
+        self.data_driven_nidaq_placeholder.setObjectName(u"data_driven_nidaq_placeholder")
+
+        self.gridLayout_27.addWidget(self.data_driven_nidaq_placeholder, 0, 0, 1, 1)
+
+        self.scrollArea_13.setWidget(self.scrollAreaWidgetContents_13)
+
+        self.gridLayout_26.addWidget(self.scrollArea_13, 0, 0, 1, 1)
+
+        self.nidaq_tabs.addTab(self.data_driven_control_nidaq_tab, "")
         self.lqr_control_nidaq_tab = QWidget()
         self.lqr_control_nidaq_tab.setObjectName(u"lqr_control_nidaq_tab")
         self.gridLayout_24 = QGridLayout(self.lqr_control_nidaq_tab)
@@ -649,6 +673,12 @@ class Ui_PydaqGlobal(object):
         self.gridLayout_24.addWidget(self.scrollArea_12, 0, 0, 1, 1)
 
         self.nidaq_tabs.addTab(self.lqr_control_nidaq_tab, "")
+
+
+        self.nidaq_tabs.removeTab(self.nidaq_tabs.indexOf(self.data_driven_control_nidaq_tab))
+
+
+        self.nidaq_tabs.addTab(self.data_driven_control_nidaq_tab, "")
 
         self.gridLayout.addWidget(self.nidaq_tabs, 0, 1, 1, 1)
 
@@ -767,6 +797,28 @@ class Ui_PydaqGlobal(object):
         self.gridLayout_18.addWidget(self.scrollArea_9, 0, 0, 1, 1)
 
         self.arduino_tabs.addTab(self.pid_control_arduino_tab, "")
+        self.data_driven_control_arduino_tab = QWidget()
+        self.data_driven_control_arduino_tab.setObjectName(u"data_driven_control_arduino_tab")
+        self.gridLayout_28 = QGridLayout(self.data_driven_control_arduino_tab)
+        self.gridLayout_28.setObjectName(u"gridLayout_28")
+        self.scrollArea_14 = QScrollArea(self.data_driven_control_arduino_tab)
+        self.scrollArea_14.setObjectName(u"scrollArea_14")
+        self.scrollArea_14.setWidgetResizable(True)
+        self.scrollAreaWidgetContents_14 = QWidget()
+        self.scrollAreaWidgetContents_14.setObjectName(u"scrollAreaWidgetContents_14")
+        self.scrollAreaWidgetContents_14.setGeometry(QRect(0, 0, 526, 432))
+        self.gridLayout_29 = QGridLayout(self.scrollAreaWidgetContents_14)
+        self.gridLayout_29.setObjectName(u"gridLayout_29")
+        self.data_driven_arduino_placeholder = Data_Driven_Control_Arduino_Widget(self.scrollAreaWidgetContents_14)
+        self.data_driven_arduino_placeholder.setObjectName(u"data_driven_arduino_placeholder")
+
+        self.gridLayout_29.addWidget(self.data_driven_arduino_placeholder, 0, 0, 1, 1)
+
+        self.scrollArea_14.setWidget(self.scrollAreaWidgetContents_14)
+
+        self.gridLayout_28.addWidget(self.scrollArea_14, 0, 0, 1, 1)
+
+        self.arduino_tabs.addTab(self.data_driven_control_arduino_tab, "")
         self.LQR_control_arduino_tab = QWidget()
         self.LQR_control_arduino_tab.setObjectName(u"LQR_control_arduino_tab")
         self.gridLayout_22 = QGridLayout(self.LQR_control_arduino_tab)
@@ -789,6 +841,12 @@ class Ui_PydaqGlobal(object):
         self.gridLayout_22.addWidget(self.scrollArea_11, 0, 0, 1, 1)
 
         self.arduino_tabs.addTab(self.LQR_control_arduino_tab, "")
+
+
+        self.arduino_tabs.removeTab(self.arduino_tabs.indexOf(self.data_driven_control_arduino_tab))
+
+
+        self.arduino_tabs.addTab(self.data_driven_control_arduino_tab, "")
 
         self.gridLayout.addWidget(self.arduino_tabs, 0, 0, 1, 1)
 
@@ -856,15 +914,20 @@ class Ui_PydaqGlobal(object):
         self.nidaq_tabs.setTabText(self.nidaq_tabs.indexOf(self.step_response_nidaq_tab), QCoreApplication.translate("PydaqGlobal", u"Step Response", None))
         self.nidaq_tabs.setTabText(self.nidaq_tabs.indexOf(self.get_model_nidaq_tab), QCoreApplication.translate("PydaqGlobal", u"Get Model", None))
         self.nidaq_tabs.setTabText(self.nidaq_tabs.indexOf(self.pid_control_nidaq_tab), QCoreApplication.translate("PydaqGlobal", u"PID Control", None))
+        self.nidaq_tabs.setTabText(self.nidaq_tabs.indexOf(self.pid_control_nidaq_tab), QCoreApplication.translate("PydaqGlobal", u"PID Control", None))
+        self.nidaq_tabs.setTabText(self.nidaq_tabs.indexOf(self.data_driven_control_nidaq_tab), QCoreApplication.translate("PydaqGlobal", u"Data-Driven Control", None))
+        self.nidaq_tabs.setTabText(self.nidaq_tabs.indexOf(self.lqr_control_nidaq_tab), QCoreApplication.translate("PydaqGlobal", u"LQR Control", None))
         self.nidaq_tabs.setTabText(self.nidaq_tabs.indexOf(self.lqr_control_nidaq_tab), QCoreApplication.translate("PydaqGlobal", u"LQR Control", None))
         self.arduino_tabs.setTabText(self.arduino_tabs.indexOf(self.get_data_arduino_tab), QCoreApplication.translate("PydaqGlobal", u"Get Data", None))
         self.arduino_tabs.setTabText(self.arduino_tabs.indexOf(self.send_data_arduino_tab), QCoreApplication.translate("PydaqGlobal", u"Send Data", None))
         self.arduino_tabs.setTabText(self.arduino_tabs.indexOf(self.step_response_arduino_tab), QCoreApplication.translate("PydaqGlobal", u"Step Response", None))
         self.arduino_tabs.setTabText(self.arduino_tabs.indexOf(self.get_model_arduino_tab), QCoreApplication.translate("PydaqGlobal", u"Get Model", None))
         self.arduino_tabs.setTabText(self.arduino_tabs.indexOf(self.pid_control_arduino_tab), QCoreApplication.translate("PydaqGlobal", u"PID Control", None))
+        self.arduino_tabs.setTabText(self.arduino_tabs.indexOf(self.pid_control_arduino_tab), QCoreApplication.translate("PydaqGlobal", u"PID Control", None))
+        self.arduino_tabs.setTabText(self.arduino_tabs.indexOf(self.data_driven_control_arduino_tab), QCoreApplication.translate("PydaqGlobal", u"Data-Driven Control", None))
+        self.arduino_tabs.setTabText(self.arduino_tabs.indexOf(self.LQR_control_arduino_tab), QCoreApplication.translate("PydaqGlobal", u"LQR Control", None))
         self.arduino_tabs.setTabText(self.arduino_tabs.indexOf(self.LQR_control_arduino_tab), QCoreApplication.translate("PydaqGlobal", u"LQR Control", None))
         self.menuArduino.setTitle(QCoreApplication.translate("PydaqGlobal", u"Arduino", None))
         self.menuAbout.setTitle(QCoreApplication.translate("PydaqGlobal", u"About", None))
         self.menuNIDAQ.setTitle(QCoreApplication.translate("PydaqGlobal", u"NIDAQ", None))
     # retranslateUi
-

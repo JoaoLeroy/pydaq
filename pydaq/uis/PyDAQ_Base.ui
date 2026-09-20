@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <ui version="4.0">
  <class>PydaqGlobal</class>
  <widget class="QMainWindow" name="PydaqGlobal">
@@ -24,7 +24,7 @@
     <normaloff>:/imgs/imgs/favicon.ico</normaloff>:/imgs/imgs/favicon.ico</iconset>
   </property>
   <property name="locale">
-   <locale language="English" country="UnitedStates"/>
+   <locale language="English" country="UnitedStates" />
   </property>
   <property name="iconSize">
    <size>
@@ -256,12 +256,12 @@ QPushButton{
 	border-right: 1.5px solid rgb(0, 0, 0);
 
 	
-	font: 12pt &quot;Helvetica&quot;;
+	font: 12pt "Helvetica";
 	text-align:center;
 }
 
 QWidget{
-	font: 12pt &quot;Helvetica&quot;;
+	font: 12pt "Helvetica";
 }
 
 QPushButton:hover{
@@ -314,7 +314,7 @@ QPushButton#reload_devices{
 	border-right: 1.5px solid rgb(0, 0, 0);
 
 	
-	font: 12pt &quot;Helvetica&quot;;
+	font: 12pt "Helvetica";
 	text-align:center;
 }
 
@@ -410,7 +410,7 @@ QTableWidget {
     gridline-color: rgb(166, 166, 166);
     color: white;
     border: 1px solid rgb(166, 166, 166);
-    font: 11pt &quot;Helvetica&quot;;
+    font: 11pt "Helvetica";
 }
 
 QTableWidget QLineEdit {
@@ -448,7 +448,7 @@ QTableWidget::item:selected {
        <string>Go to PYDAQ Documentation</string>
       </property>
       <property name="text">
-       <string/>
+       <string />
       </property>
       <property name="icon">
        <iconset resource="resources_1.qrc">
@@ -465,7 +465,7 @@ QTableWidget::item:selected {
     <item>
      <widget class="QWidget" name="widget" native="true">
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true" />
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
@@ -541,7 +541,7 @@ QTableWidget::item:selected {
               </property>
               <layout class="QGridLayout" name="gridLayout_8">
                <item row="0" column="0">
-                <widget class="GetData_NIDAQ_Widget" name="get_nidaq_placeholder" native="true"/>
+                <widget class="GetData_NIDAQ_Widget" name="get_nidaq_placeholder" native="true" />
                </item>
               </layout>
              </widget>
@@ -570,7 +570,7 @@ QTableWidget::item:selected {
               </property>
               <layout class="QGridLayout" name="gridLayout_10">
                <item row="0" column="0">
-                <widget class="SendData_NIDAQ_Widget" name="send_nidaq_placeholder" native="true"/>
+                <widget class="SendData_NIDAQ_Widget" name="send_nidaq_placeholder" native="true" />
                </item>
               </layout>
              </widget>
@@ -599,7 +599,7 @@ QTableWidget::item:selected {
               </property>
               <layout class="QGridLayout" name="gridLayout_9">
                <item row="0" column="0">
-                <widget class="StepResponse_NIDAQ_Widget" name="step_nidaq_placeholder" native="true"/>
+                <widget class="StepResponse_NIDAQ_Widget" name="step_nidaq_placeholder" native="true" />
                </item>
               </layout>
              </widget>
@@ -628,7 +628,7 @@ QTableWidget::item:selected {
               </property>
               <layout class="QGridLayout" name="gridLayout_15">
                <item row="0" column="0">
-                <widget class="GetModel_Nidaq_Widget" name="getm_nidaq_placeholder" native="true"/>
+                <widget class="GetModel_Nidaq_Widget" name="getm_nidaq_placeholder" native="true" />
                </item>
               </layout>
              </widget>
@@ -657,7 +657,7 @@ QTableWidget::item:selected {
               </property>
               <layout class="QGridLayout" name="gridLayout_21">
                <item row="0" column="0">
-                <widget class="PID_Control_NIDAQ_Widget" name="widget_4" native="true"/>
+                <widget class="PID_Control_NIDAQ_Widget" name="widget_4" native="true" />
                </item>
               </layout>
              </widget>
@@ -686,7 +686,36 @@ QTableWidget::item:selected {
               </property>
               <layout class="QGridLayout" name="gridLayout_25">
                <item row="0" column="0">
-                <widget class="LQRControl_NIDAQ_Widget" name="lqr_nidaq_placeholder" native="true"/>
+                <widget class="LQRControl_NIDAQ_Widget" name="lqr_nidaq_placeholder" native="true" />
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="data_driven_control_nidaq_tab">
+          <attribute name="title">
+           <string>Data-Driven Control</string>
+          </attribute>
+          <layout class="QGridLayout" name="gridLayout_26">
+           <item row="0" column="0">
+            <widget class="QScrollArea" name="scrollArea_13">
+             <property name="widgetResizable">
+              <bool>true</bool>
+             </property>
+             <widget class="QWidget" name="scrollAreaWidgetContents_13">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>525</width>
+                <height>432</height>
+               </rect>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_27">
+               <item row="0" column="0">
+                <widget class="Data_Driven_Control_NIDAQ_Widget" name="data_driven_nidaq_placeholder" native="true" />
                </item>
               </layout>
              </widget>
@@ -699,7 +728,7 @@ QTableWidget::item:selected {
        <item row="0" column="0">
         <widget class="QTabWidget" name="arduino_tabs">
          <property name="styleSheet">
-          <string notr="true"/>
+          <string notr="true" />
          </property>
          <property name="tabShape">
           <enum>QTabWidget::TabShape::Rounded</enum>
@@ -731,7 +760,7 @@ QTableWidget::item:selected {
               </property>
               <layout class="QGridLayout" name="gridLayout_11">
                <item row="0" column="0">
-                <widget class="GetData_Arduino_Widget" name="get_ino_placeholder" native="true"/>
+                <widget class="GetData_Arduino_Widget" name="get_ino_placeholder" native="true" />
                </item>
               </layout>
              </widget>
@@ -760,7 +789,7 @@ QTableWidget::item:selected {
               </property>
               <layout class="QGridLayout" name="gridLayout_12">
                <item row="0" column="0">
-                <widget class="SendData_Arduino_Widget" name="send_ino_placeholder" native="true"/>
+                <widget class="SendData_Arduino_Widget" name="send_ino_placeholder" native="true" />
                </item>
               </layout>
              </widget>
@@ -789,7 +818,7 @@ QTableWidget::item:selected {
               </property>
               <layout class="QGridLayout" name="gridLayout_14">
                <item row="0" column="0">
-                <widget class="StepResponse_Arduino_Widget" name="step_ino_placeholder" native="true"/>
+                <widget class="StepResponse_Arduino_Widget" name="step_ino_placeholder" native="true" />
                </item>
               </layout>
              </widget>
@@ -818,7 +847,7 @@ QTableWidget::item:selected {
               </property>
               <layout class="QGridLayout" name="gridLayout_17">
                <item row="0" column="0">
-                <widget class="GetModel_Arduino_Widget" name="getm_arduino_placeholder" native="true"/>
+                <widget class="GetModel_Arduino_Widget" name="getm_arduino_placeholder" native="true" />
                </item>
               </layout>
              </widget>
@@ -847,7 +876,7 @@ QTableWidget::item:selected {
               </property>
               <layout class="QGridLayout" name="gridLayout_19">
                <item row="0" column="1">
-                <widget class="PID_Control_Arduino_Widget" name="widget_3" native="true"/>
+                <widget class="PID_Control_Arduino_Widget" name="widget_3" native="true" />
                </item>
               </layout>
              </widget>
@@ -876,7 +905,36 @@ QTableWidget::item:selected {
               </property>
               <layout class="QGridLayout" name="gridLayout_23">
                <item row="0" column="0">
-                <widget class="LQRControl_Arduino_Widget" name="lqr_arduino_placeholder" native="true"/>
+                <widget class="LQRControl_Arduino_Widget" name="lqr_arduino_placeholder" native="true" />
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="data_driven_control_arduino_tab">
+          <attribute name="title">
+           <string>Data-Driven Control</string>
+          </attribute>
+          <layout class="QGridLayout" name="gridLayout_28">
+           <item row="0" column="0">
+            <widget class="QScrollArea" name="scrollArea_14">
+             <property name="widgetResizable">
+              <bool>true</bool>
+             </property>
+             <widget class="QWidget" name="scrollAreaWidgetContents_14">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>526</width>
+                <height>432</height>
+               </rect>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_29">
+               <item row="0" column="0">
+                <widget class="Data_Driven_Control_Arduino_Widget" name="data_driven_arduino_placeholder" native="true" />
                </item>
               </layout>
              </widget>
@@ -904,27 +962,27 @@ QTableWidget::item:selected {
     <property name="title">
      <string>Arduino</string>
     </property>
-    <addaction name="actionArduino_1"/>
-    <addaction name="actionArduino_3"/>
+    <addaction name="actionArduino_1" />
+    <addaction name="actionArduino_3" />
    </widget>
    <widget class="QMenu" name="menuAbout">
     <property name="title">
      <string>About</string>
     </property>
-    <addaction name="actionDocumentation"/>
+    <addaction name="actionDocumentation" />
    </widget>
    <widget class="QMenu" name="menuNIDAQ">
     <property name="title">
      <string>NIDAQ</string>
     </property>
-    <addaction name="actionNIDAQ_1"/>
-    <addaction name="actionNIDAQ_3"/>
+    <addaction name="actionNIDAQ_1" />
+    <addaction name="actionNIDAQ_3" />
    </widget>
-   <addaction name="menuArduino"/>
-   <addaction name="menuNIDAQ"/>
-   <addaction name="menuAbout"/>
+   <addaction name="menuArduino" />
+   <addaction name="menuNIDAQ" />
+   <addaction name="menuAbout" />
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QStatusBar" name="statusbar" />
   <action name="actionArduino">
    <property name="text">
     <string>Arduino</string>
@@ -1043,6 +1101,18 @@ QTableWidget::item:selected {
    <container>1</container>
   </customwidget>
   <customwidget>
+   <class>Data_Driven_Control_Arduino_Widget</class>
+   <extends>QWidget</extends>
+   <header>..guis.data_driven_control_arduino_widget</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Data_Driven_Control_NIDAQ_Widget</class>
+   <extends>QWidget</extends>
+   <header>..guis.data_driven_control_nidaq_widget</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
    <class>LQRControl_Arduino_Widget</class>
    <extends>QWidget</extends>
    <header>..guis.lrq_control_arduino_widget</header>
@@ -1056,7 +1126,7 @@ QTableWidget::item:selected {
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="resources_1.qrc"/>
+  <include location="resources_1.qrc" />
  </resources>
  <connections>
   <connection>
@@ -1125,6 +1195,6 @@ QTableWidget::item:selected {
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="interface_radio"/>
+  <buttongroup name="interface_radio" />
  </buttongroups>
 </ui>
